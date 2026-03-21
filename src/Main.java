@@ -2,7 +2,7 @@ import java.util.Random;
 
 void main() {
     // 1. おみくじのリストを作る
-    String[] results = {"大吉", "中吉", "小吉", "吉", "凶"};
+    String[] results = {"超大吉","大吉", "中吉", "小吉", "吉", "凶"};
 
     // 2. ランダムな数字（0〜4）を選ぶ
     int randomIndex = new Random().nextInt(results.length);
@@ -11,8 +11,8 @@ void main() {
     String result = results[randomIndex];
 
     // 4. 画面に表示する
-    System.out.println("----- おみくじを引くよ！ -----");
-    System.out.println("結果は... 【 " + result + " 】 です！");
+    IO.println("----- おみくじを引くよ！ -----");
+    IO.println("結果は... 【 " + result + " 】 です！");
 
     // 結果に合わせて一言コメント
     if (result.equals("大吉")) {
