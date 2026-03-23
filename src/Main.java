@@ -4,7 +4,7 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("名前を入力してください:");
+        System.out.println("名前を入力してください!:");
         String name = scanner.nextLine();
 
         String[] results = {"大吉", "中吉", "小吉"};
