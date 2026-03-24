@@ -20,8 +20,15 @@ public class Main {
             System.out.println("残念、まだ僕とは飲めません（ ;  ; ）");
         }
 
-        // 3. おみくじの結果
-        String[] results = {"大吉", "中吉", "小吉"};
+        // 3. おみくじの結果を入れる「箱」だけ先に準備する
+        String[] results;
+        if (age>=20) {
+            //20歳以上のリスト
+            results = new String[]{"何をやってもうまくいく大吉", "副業がうまくいく中吉", "飲み過ぎ注意の凶"};
+        } else{
+            //19歳以下リスト
+            results=new String[]{"志望校合格の大吉","部活で活躍できる中吉","課題に追われる凶"};
+        }
         int index = new Random().nextInt(results.length);
 
         // 4. ラッキーカラーの計算（ここをmainの中に移動）
