@@ -2,46 +2,53 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Main {
-    public static void main(String[] args) { // ← ここからプログラム開始
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
 
-        // 1. 名前と年齢の入力
-        System.out.println("名前を入力してください!:");
+        System.out.println("--- おみくじアプリ起動 ---");
+        System.out.print("名前を入力してください: ");
         String name = scanner.nextLine();
-
-        System.out.println("年齢を教えてください:");
+        System.out.print("年齢を教えてください: ");
         int age = scanner.nextInt();
-        System.out.println(name + "さんは" + age + "歳なんですね！");
+        scanner.nextLine(); // nextIntの後の改行対策（おまじない）
 
-        // 2. 年齢によるリアクション
-        if (age >= 20) {
-            System.out.println("おっ、成人ですね！今度飲みましょう！");
-        } else {
-            System.out.println("残念、まだ僕とは飲めません（ ;  ; ）");
+        // --- ここからループ開始 ---
+        boolean keepRunning = true;
+
+        while (keepRunning) {
+            System.out.println("\n" + name + "さんの運勢を占います...");
+
+            // 1. 年齢別おみくじ
+            String[] results;
+            if (age >= 20) {
+                results = new String[]{"昇進の大吉", "副業の中吉", "飲み過ぎの凶"};
+            } else {
+                results = new String[]{"合格の大吉", "部活の中吉", "宿題忘れの凶"};
+            }
+            String result = results[random.nextInt(results.length)];
+
+            // 2. ラッキーカラー
+            String[] colors = {"赤", "青", "金", "緑"};
+            String color = colors[random.nextInt(colors.length)];
+
+            // 3. 結果発表
+            System.out.println("*************************");
+            System.out.println("結果: " + result);
+            System.out.println("ラッキーカラー: " + color);
+            System.out.println("*************************");
+
+            // 4. 継続確認
+            System.out.print("もう一度引きますか？ (y/n): ");
+            String answer = scanner.nextLine();
+
+            if (!answer.equals("y")) {
+                keepRunning = false; // y以外ならループを抜ける
+            }
         }
+        // --- ループ終了 ---
 
-        // 3. おみくじの結果を入れる「箱」だけ先に準備する
-        String[] results;
-        if (age>=20) {
-            //20歳以上のリスト
-            results = new String[]{"何をやってもうまくいく大吉", "副業がうまくいく中吉", "飲み過ぎ注意の凶"};
-        } else{
-            //19歳以下リスト
-            results=new String[]{"志望校合格の大吉","部活で活躍できる中吉","課題に追われる凶"};
-        }
-        int index = new Random().nextInt(results.length);
-
-        // 4. ラッキーカラーの計算（ここをmainの中に移動）
-        String[] colors = {"情熱の赤", "冷静な青", "金運のゴールド", "癒しの緑"};
-        int colorIndex = new Random().nextInt(colors.length);
-        String luckyColor = colors[colorIndex];
-
-        // 5. 結果表示
-        System.out.println("*************************:");
-        System.out.println(name + "さんの運勢は " + results[index] + " です！");
-        System.out.println("今日のラッキーカラーは...「" + luckyColor + "」です！");
-        System.out.println("*************************:");
-
+        System.out.println("バイバイ！");
         scanner.close();
-    } // ← mainの終わり
-} // ← クラスの終わり
+    }
+}
