@@ -22,9 +22,9 @@ public class Main {
             // 1. 年齢別おみくじ
             String[] results;
             if (age >= 20) {
-                results = new String[]{"昇進の大吉", "副業の中吉", "飲み過ぎの凶"};
+                results = new String[]{"全てがうまくいく大吉", "副業がうまく行く中吉", "飲み過ぎの凶"};
             } else {
-                results = new String[]{"合格の大吉", "部活の中吉", "宿題忘れの凶"};
+                results = new String[]{"全てがうまくいく大吉", "部活がうまくいく中吉", "課題忘れの凶"};
             }
             String result = results[random.nextInt(results.length)];
 
