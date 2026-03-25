@@ -28,15 +28,11 @@ public class Main {
             }
             String result = results[random.nextInt(results.length)];
 
-            // 2. ラッキーカラー
-            String[] colors = {"赤", "青", "金", "緑"};
-            String color = colors[random.nextInt(colors.length)];
+            // 2. ラッキーカラー（スタッフ getLuckyColor に任せる）
+            String color = getLuckyColor(random);
 
-            // 3. 結果発表
-            System.out.println("*************************");
-            System.out.println("結果: " + result);
-            System.out.println("ラッキーカラー: " + color);
-            System.out.println("*************************");
+            // 3. 結果発表（スタッフ showResult に任せる）
+            showResult(name, result, color);
 
             // 4. 継続確認
             System.out.print("もう一度引きますか？ (y/n): ");
@@ -50,5 +46,18 @@ public class Main {
 
         System.out.println("バイバイ！");
         scanner.close();
+    }
+    //省力文１：ラッキーカラーを決める
+    public static String getLuckyColor(Random random) {
+        String[] colors = {"赤", "青", "金", "緑"};
+        return colors[random.nextInt(colors.length)];
+    }
+
+    //省力文2:結果を表示する人
+    public static void showResult(String name, String result, String color){
+        System.out.println("*********************");
+        System.out.println(name+"さんの結果"+result);
+        System.out.println("ラッキーカラー:"+color);
+        System.out.println("*********************");
     }
 }
